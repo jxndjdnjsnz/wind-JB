@@ -42,7 +42,7 @@ task.spawn(function()
         content = "该脚本为旧版本,新版本已切换至wind ui,点击收到切换至新版本脚本",
         confirmText = "收到",
         onConfirm = function()
-             loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/jiaoben/refs/heads/main/wind%20JB.lua"))()
+             loadstring(game:HttpGet(https://github.com/SyndromeXph/Patriot-Key-System-Ui-Library"))()
         end
     })
 end)

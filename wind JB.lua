@@ -1,4 +1,4 @@
-local WindUI = loadstring(game:HttpGet('https://raw.githubusercontent.com/Footagesus/WindUI/refs/heads/main/main_example.lua'))()
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 local VirtualUser = game:GetService("VirtualUser")
 local function GetNil(Name, DebugId)
 	for _, Object in getnilinstances() do

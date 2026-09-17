@@ -2,8 +2,7 @@
 local PATRIOT_RAW_URL = "https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/PatriotUi.luau.txt"
 local SCRIPT_TITLE = "wind JB"
 local DISCORD_LINK = "https://discord.gg/9178"
-local GET_KEY_LINK = "https://你的域名.com"
-local VERIFY_API_URL = "https://你的域名.com/api/verify"
+local GET_KEY_LINK = ""
 
 local success, Patriot = pcall(function()
     return loadstring(game:HttpGet(PATRIOT_RAW_URL))()
@@ -28,34 +27,25 @@ Patriot.Storage.Remember = true
 Patriot.Storage.AutoLoad = true
 
 Patriot.Callbacks.OnSuccess = function()
-    print("密钥校验成功，正在加载脚本...")
+    print("✅ 密钥校验成功，正在加载脚本...")
     local userKey = getgenv().SCRIPT_KEY
     print("用户使用的密钥: ", userKey)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB.lua"))()
 end
 
 Patriot.Callbacks.OnVerify = function(inputKey)
-    local HttpService = cloneref(game:GetService("HttpService"))
-    local encodeKey = HttpService:UrlEncode(inputKey)
-    local fullUrl = VERIFY_API_URL .. "?key=" .. encodeKey
-
-    local ok, resp = pcall(function()
-        return game:HttpGet(fullUrl)
-    end)
-    if not ok then
-        warn("❌网络请求失败，无法连接密钥服务器")
-        return false
+    local validKeys = {
+        "LUWENBINGSHIGAY",
+        "820819QWE"
+        "WODUILEILAOMU"
+        "78911367"
+    }
+    for _, k in ipairs(validKeys) do
+        if inputKey == k then
+            return true
+        end
     end
-
-    local decodeOk, data = pcall(function()
-        return HttpService:JSONDecode(resp)
-    end)
-    if not decodeOk then
-        warn("❌服务器返回数据格式错误")
-        return false
-    end
-
-    return data.valid == true
+    return false
 end
 
 Patriot.Callbacks.OnFail = function(errMsg)

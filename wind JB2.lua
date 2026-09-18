@@ -45,62 +45,57 @@ Patriot.Callbacks.OnSuccess = function()
         Size = UDim2.fromOffset(440, 340),
         Theme = "Dark"
     })
-
-    -- 标签页
-    local TabVehicle = Window:Tab({
-        Title = "Twsited X15.0.1",
-        Icon = "car"
-    })
-    local TabOther = Window:Tab({
-        Title = "其他功能",
-        Icon = "settings"
-    })
-    local function SpawnCar(carName)
-        if cooldownActive then return end
-        cooldownActive = true
-        task.spawn(function()
-            for _, v in pairs(workspace:GetChildren()) do
-                if v:IsA("Model") and v:FindFirstChild("Humanoid") and v ~= localPlayer.Character then
-                    local seat = v:FindFirstChildWhichIsA("VehicleSeat", true)
-                    if seat and seat.Occupant and seat.Occupant:IsDescendantOf(localPlayer.Character) then
-                        v:Destroy()
-                        task.wait(0.2)
-                        break
-                    end
-                end
-            end
-
-            local char = localPlayer.Character or localPlayer.CharacterAdded:Wait()
-            char:WaitForChild("HumanoidRootPart")
-            local SpawnCarEvent = ReplicatedStorage:WaitForChild("SpawnCar")
-            SpawnCarEvent:FireServer(carName)
-
-            task.wait(cooldownTime)
-            cooldownActive = false
-        end)
-    end
-
-    TabVehicle:Section({Title = "车辆召唤"})
-
-    TabVehicle:Button({
-        Title = "召唤 Dominator 1",
+    Tab:Section({Title = "请选择服务器"})
+    Tab:Button({
+        Title = "被遗弃",
         Callback = function()
-            SpawnCar("Dominator 1")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20jb%20.txt"))() 
         end
     })
-    TabVehicle:Button({
-        Title = "召唤 Dominator 2",
+    Tab:Button({
+        Title = "UBG 终极战场",
         Callback = function()
-            SpawnCar("Dominator 2")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB%20ubg.txt"))() 
         end
     })
-    TabVehicle:Button({
-        Title = "召唤 Dominator 3",
+    ContyTab:Section({Title = "其他脚本"})
+    ContyTab:Button({
+        Title = "RB脚本付费版",
         Callback = function()
-            SpawnCar("Dominator 3")
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/Rb%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%BF%83%E6%BA%90%E7%A0%81.lua"))() 
         end
     })
-
+    ContyTab:Button({
+        Title = "xi pro",
+        Callback = function()
+            loadstring(request({Url = "https://raw.githubusercontent.com/Zer0neK/SB-Xi-pro/refs/heads/main/SBXiPro.lua"}).Body)()
+        end
+    })
+    ContyTab:Button({
+        Title = "XK旧版",
+        Callback = function()
+            loadstring(game:HttpGet(('https://github.com/devslopo/DVES/raw/main/XK%20Hub')))()
+        end
+    })
+    ContyTab:Button({
+        Title = "XKRemake",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/SyndromeXph/XK-Script/refs/heads/main/XoneK-Loader.luau"))()
+        end
+    })
+    ContyTab:Button({
+        Title = "XK测试版",
+        Callback = function()
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/6c338d109dba8545edae479e7e2c793d.lua"))()
+        end
+    })
+    Window:OnClose(function()
+        antiAfkRunning = false
+        if antiAfkConnection then
+            antiAfkConnection:Disconnect()
+            antiAfkConnection = nil
+        end
+    end)
     TabOther:Section({Title = "挂机防踢"})
     TabOther:Toggle({
         Title = "开启挂机防踢",
@@ -120,6 +115,7 @@ Patriot.Callbacks.OnSuccess = function()
                     antiAfkConnection = nil
                 end
             end
+            
         end
     })
 

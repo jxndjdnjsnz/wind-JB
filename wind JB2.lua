@@ -45,6 +45,9 @@ Patriot.Callbacks.OnSuccess = function()
         Size = UDim2.fromOffset(440, 340),
         Theme = "Dark"
     })
+    local Tab = Window:Tab({ Title = "服务器", Icon = "server" })
+    local ContyTab = Window:Tab({ Title = "其他脚本", Icon = "box" })
+    local TabOther = Window:Tab({ Title = "其他工具", Icon = "wrench" })
     Tab:Section({Title = "请选择服务器"})
     Tab:Button({
         Title = "被遗弃",

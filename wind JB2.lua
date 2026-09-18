@@ -27,7 +27,14 @@ Patriot.Storage.Remember = true
 Patriot.Storage.AutoLoad = true
 
 Patriot.Callbacks.OnSuccess = function()
-    local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/UI.lua.txt"))()
+    local okUI, WindUI = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/UI.lua.txt"))()
+end)
+if not okUI or type(WindUI) ~= "function" then
+    warn("[JB Hub] UI 库加载失败，请重试或检查网络")
+    return
+end
+
 
     local Players = game:GetService("Players")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -52,13 +59,16 @@ Patriot.Callbacks.OnSuccess = function()
     Tab:Button({
         Title = "被遗弃",
         Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20jb%20.txt"))() 
+            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20jb%20.txt"))()
+            end)
+
         end
     })
     Tab:Button({
         Title = "UBG 终极战场",
         Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB%20ubg.txt"))() 
+            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB%20ubg.txt"))()
+            end)
         end
     })
     ContyTab:Section({Title = "其他脚本"})

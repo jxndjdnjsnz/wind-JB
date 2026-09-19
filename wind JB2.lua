@@ -56,21 +56,6 @@ end
     local ContyTab = Window:Tab({ Title = "其他脚本", Icon = "box" })
     local TabOther = Window:Tab({ Title = "其他工具", Icon = "wrench" })
     Tab:Section({Title = "请选择服务器"})
-    Tab:Button({
-        Title = "被遗弃",
-        Callback = function()
-            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20jb%20.txt"))()
-            end)
-
-        end
-    })
-    Tab:Button({
-        Title = "UBG 终极战场",
-        Callback = function()
-            pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB%20ubg.txt"))()
-            end)
-        end
-    })
     ContyTab:Section({Title = "其他脚本"})
     ContyTab:Button({
         Title = "RB脚本付费版",

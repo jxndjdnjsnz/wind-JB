@@ -28,7 +28,7 @@ Patriot.Storage.AutoLoad = true
 
 Patriot.Callbacks.OnSuccess = function()
     local okUI, WindUI = pcall(function()
-    return loadstring(readfile("UI.lua.txt"))()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/UI.lua.txt"))()
 end)
 if not okUI or type(WindUI) ~= "function" then
     warn("[JB Hub] UI 库加载失败，请重试或检查网络")

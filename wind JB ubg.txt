@@ -75,7 +75,19 @@ Patriot.Callbacks.OnSuccess = function()
         SideBarWidth = 200,
         ScrollBarEnabled = true,
     })
-
+    local notTab = Window:Tab({
+    Title = "公告",
+    Icon = "",
+    Locked = false,
+})
+    notTab:Paragraph({
+    Title = "更新",
+    Desc = "更新了快速切换角色",
+    Image = "file-warning",
+    Color = "Red",
+    ImageSize = 40, 
+    ThumbnailSize = 120
+})
     local TabOther = Window:Tab({
         Title = "挂机防踢",
         Icon = "shield",
@@ -1901,7 +1913,60 @@ Tab:Toggle({
         ignoreFriends = state
     end
 })
+local Tab = Window:Tab({
+    Title = "快速切换角色",
+    Icon = "box",
+    Locked = false,
+})
+local lastPosition
+local function getHumanoidRootPart()
+    local character = LocalPlayer.Character
+    return character and character:FindFirstChild("HumanoidRootPart")
+end
 
+local function savePosition()
+    local rootPart = getHumanoidRootPart()
+    if rootPart then
+        lastPosition = rootPart.CFrame
+    end
+end
+local function handleKeyPress(characterName)
+    savePosition()
+    
+    local rootPart = getHumanoidRootPart()
+    if rootPart then
+        rootPart.CFrame = CFrame.new(1011.1289672851562, -1009.359588623046875, 116.37605285644531)
+    end
+
+    ReplicatedStorage.Remotes.Character.ChangeCharacter:FireServer(characterName)
+
+    local groundY = workspace.Map.Structural.Ground:GetChildren()[21].Position.Y
+    repeat task.wait() until getHumanoidRootPart() and getHumanoidRootPart().Position.Y > groundY
+    task.wait(0.15)
+
+    local newRootPart = getHumanoidRootPart()
+    if newRootPart and lastPosition then
+        repeat
+            newRootPart.CFrame = lastPosition
+            task.wait(0.1)
+        until (newRootPart.Position - lastPosition.Position).Magnitude < 10
+    end
+end
+Tab:Button({
+    Title = "快速切换成小杰",
+    Locked = false,
+    Callback = function() handleKeyPress("Gon") end
+})
+Tab:Button({
+    Title = "快速切换成被诅咒的导师",
+    Locked = false,
+    Callback = function() handleKeyPress("Nanami") end
+})
+Tab:Button({
+    Title = "快速切换成沉默的艾丝帕",
+    Locked = false,
+    Callback = function() handleKeyPress("Mob") end
+})
 local Tab = Window:Tab({
     Title = "碰撞箱扩大",
     Icon = "box",

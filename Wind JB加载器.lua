@@ -86,7 +86,7 @@ Tab:Button({
     Callback = function()
         loadScript(
             "JB HUB",
-            "https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/Wind%20jb%20%E9%80%9A%E7%94%A8%E6%97%A0%E5%AF%86%E9%92%A5.lua"
+            "https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/JB%20HUB.lua"
         )
     end,
 })

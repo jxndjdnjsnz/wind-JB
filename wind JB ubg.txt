@@ -77,7 +77,7 @@ Patriot.Callbacks.OnSuccess = function()
     })
     local notTab = Window:Tab({
     Title = "公告",
-    Icon = "",
+    Icon = "megaphone",
     Locked = false,
 })
     notTab:Paragraph({

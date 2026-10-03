@@ -67,6 +67,28 @@ Tab:Button({
         )
     end,
 })
+Tab:Button({
+    Title = "终极战场 (UBG)",
+    Description = "需要输入密钥",
+    Icon = "sword",
+    Callback = function()
+        loadScript(
+            "Rb脚本中心破解版",
+            "https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/Rb%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%BF%83%E6%BA%90%E7%A0%81.lua"
+        )
+    end,
+})
+Tab:Button({
+    Title = "终极战场 (UBG)",
+    Description = "需要输入密钥",
+    Icon = "sword",
+    Callback = function()
+        loadScript(
+            "终极战场",
+            "https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB%20ubg.txt"
+        )
+    end,
+})
 
 Tab:Button({
     Title = "落叶 Pro",

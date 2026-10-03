@@ -56,20 +56,11 @@ local function loadScript(name, url)
     end
 end
 
+
+
 Tab:Button({
-    Title = "终极战场 (UBG)",
-    Description = "需要输入密钥",
-    Icon = "sword",
-    Callback = function()
-        loadScript(
-            "终极战场",
-            "https://raw.githubusercontent.com/jxndjdnjsnz/wind-JB/refs/heads/main/wind%20JB%20ubg.txt"
-        )
-    end,
-})
-Tab:Button({
-    Title = "终极战场 (UBG)",
-    Description = "需要输入密钥",
+    Title = "Rb脚本",
+    Description = "Rb",
     Icon = "sword",
     Callback = function()
         loadScript(
@@ -112,6 +103,7 @@ Tab:Button({
         )
     end,
 })
+
 WindUI:Notify({
     Title = "Wind JB 加载器",
     Content = "加载器已就绪，请选择脚本。",
